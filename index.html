@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Getting started with JSON Form</title>
+	<link rel="stylesheet" type="text/css" href="deps/opt/bootstrap.css" />
+	<link rel="stylesheet" href="deps/opt/styles.css">
+</head>
+
+<body>
+	<h1>Getting started with JSON Form</h1>
+	<form></form>
+	<div id="res" class="alert"></div>
+	<script type="text/javascript" src="deps/jquery.min.js"></script>
+	<script type="text/javascript" src="deps/underscore.js"></script>
+	<script type="text/javascript" src="deps/opt/jsv.js"></script>
+	<script type="text/javascript" src="lib/jsonform.js"></script>
+	<script type="text/javascript">
+
+		//load json info from test.json file
+
+		$.getJSON("./test.json", function (json) {
+
+			console.log(json);
+
+			let newJSON = json.QIndicator;
+
+			console.log(newJSON);
+
+			let customJSON = {};
+
+			let count = 0;
+
+			function extractWeightPercentValues(obj) {
+				for (let k in obj) {
+
+					if (k === "Parameters") {
+
+						let wp = +obj[k].WeightPercent.double;
+
+						let name = obj[k].Name.string;
+
+						let WeightPercent = {
+							type: 'number',
+							title: name,
+							value: wp,
+							required: true,
+							key: count
+						}
+
+						customJSON[count] = WeightPercent;
+						count++;
+
+					} else if (k === "Indicator") {
+
+						for (let item of obj[k]) {
+
+							extractWeightPercentValues(item);
+
+						}
+					}
+				}
+			}
+
+			extractWeightPercentValues(newJSON);
+
+			console.log(customJSON);
+
+
+			//change WeightPercent values of the initial json object 
+
+			let customJsonKey = 0;
+
+			function fillWeightPercentValues(obj) {
+
+				for (let k in obj) {
+
+					if (k === "Parameters") {
+
+						obj[k].WeightPercent.double = +$(`#jsonform-1-elt-${customJsonKey}`).val();
+
+						customJsonKey++;
+
+					} else if (k === "Indicator") {
+
+						for (let inerObj of obj[k]) {
+
+							fillWeightPercentValues(inerObj);
+
+						}
+					}
+				}
+
+			}
+
+			//create simple form from modified json object /customJSON/
+
+			$('form').jsonForm({
+				schema: customJSON,
+				onSubmit: function (errors, values) {
+
+					fillWeightPercentValues(newJSON);
+
+					let initialJson = {
+						Qindicator: newJSON
+					}
+
+					console.log(initialJson);
+
+				}
+			});
+
+			//Add defaul values to input fields
+
+			for (let item in customJSON) {
+
+				let currentValue = Number(customJSON[item].value);
+
+				let currentSelector = `#jsonform-1-elt-${item}`;
+
+				$(currentSelector).val(currentValue);
+
+			}
+
+		});
+	</script>
+</body>
+
+</html>
