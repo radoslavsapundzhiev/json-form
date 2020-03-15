@@ -22,17 +22,15 @@
 
 		$.getJSON("./test.json", function (json) {
 
-			console.log(json);
-
 			let newJSON = json.QIndicator;
-
-			console.log(newJSON);
 
 			let customJSON = {};
 
 			let count = 0;
 
-			function extractWeightPercentValues(obj) {
+			//fill customJSON object with all Parameter props
+
+			function extractParameterProps(obj) {
 				for (let k in obj) {
 
 					if (k === "Parameters") {
@@ -41,34 +39,72 @@
 
 						let name = obj[k].Name.string;
 
-						let WeightPercent = {
-							type: 'number',
-							title: name,
+                        let kpiName = obj[k].KpiName.string;
+
+                        let wr = +obj[k].WeightResult.double;
+
+                        let result = +obj[k].Result.double;
+
+						let wpObj = {
+							type: "number",
+							title: "WeightPercent",
 							value: wp,
 							required: true,
 							key: count
 						}
 
-						customJSON[count] = WeightPercent;
-						count++;
+						let nameObj = {
+							type: "string",
+							title: "Name",
+							value: name,
+							key: count + 1
+						}
+
+						let kpiNameObj = {
+							type: "string",
+							title: "KpiName",
+							value: kpiName,
+							key: count + 2
+						}
+
+						let wrObj = {
+							type: "number",
+							title: "WeightResult",
+							value: result,
+							key: count + 3
+						}
+
+						let resultObj = {
+							type: "number",
+							title: "Result",
+							value: wr,
+							key: count + 4
+						}
+
+						customJSON[count] = wpObj;
+						customJSON[count + 1] = nameObj;
+						customJSON[count + 2] = kpiNameObj;
+						customJSON[count + 3] = wrObj;
+						customJSON[count + 4] = resultObj;
+
+						count += 5;
 
 					} else if (k === "Indicator") {
 
 						for (let item of obj[k]) {
 
-							extractWeightPercentValues(item);
+							extractParameterProps(item);
 
 						}
 					}
 				}
 			}
 
-			extractWeightPercentValues(newJSON);
+			//execute extractParameterProps
 
-			console.log(customJSON);
+			extractParameterProps(newJSON);
 
-
-			//change WeightPercent values of the initial json object 
+			//change only WeightPercent values of the initial json object 
 
 			let customJsonKey = 0;
 
@@ -79,8 +115,8 @@
 					if (k === "Parameters") {
 
 						obj[k].WeightPercent.double = +$(`#jsonform-1-elt-${customJsonKey}`).val();
-
-						customJsonKey++;
+						
+						customJsonKey += 5;
 
 					} else if (k === "Indicator") {
 
@@ -100,6 +136,8 @@
 				schema: customJSON,
 				onSubmit: function (errors, values) {
 
+					customJsonKey = 0;
+					
 					fillWeightPercentValues(newJSON);
 
 					let initialJson = {
@@ -111,15 +149,19 @@
 				}
 			});
 
-			//Add defaul values to input fields
+			//add default values to all input fields and disable all input fields but WeightPercent ones
 
 			for (let item in customJSON) {
 
-				let currentValue = Number(customJSON[item].value);
+				let currentValue = customJSON[item].value;
 
 				let currentSelector = `#jsonform-1-elt-${item}`;
 
 				$(currentSelector).val(currentValue);
+
+				if(item % 5 !== 0){
+					$(`#jsonform-1-elt-${item}`).attr("disabled", true);
+				}
 
 			}
 
