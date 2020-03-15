@@ -22,17 +22,15 @@
 
 		$.getJSON("./test.json", function (json) {
 
-			console.log(json);
-
 			let newJSON = json.QIndicator;
-
-			console.log(newJSON);
 
 			let customJSON = {};
 
 			let count = 0;
 
-			function extractWeightPercentValues(obj) {
+			//fill customJSON object with all Parameter props
+
+			function extractParameterProps(obj) {
 				for (let k in obj) {
 
 					if (k === "Parameters") {
@@ -59,7 +57,6 @@
 							type: "string",
 							title: "Name",
 							value: name,
-							required: true,
 							key: count + 1
 						}
 
@@ -67,7 +64,6 @@
 							type: "string",
 							title: "KpiName",
 							value: kpiName,
-							required: true,
 							key: count + 2
 						}
 
@@ -75,7 +71,6 @@
 							type: "number",
 							title: "WeightResult",
 							value: result,
-							required: true,
 							key: count + 3
 						}
 
@@ -83,7 +78,6 @@
 							type: "number",
 							title: "Result",
 							value: wr,
-							required: true,
 							key: count + 4
 						}
 
@@ -99,19 +93,18 @@
 
 						for (let item of obj[k]) {
 
-							extractWeightPercentValues(item);
+							extractParameterProps(item);
 
 						}
 					}
 				}
 			}
 
-			extractWeightPercentValues(newJSON);
+			//execute extractParameterProps
 
-			console.log(customJSON);
+			extractParameterProps(newJSON);
 
-
-			//change WeightPercent values of the initial json object 
+			//change only WeightPercent values of the initial json object 
 
 			let customJsonKey = 0;
 
@@ -122,8 +115,8 @@
 					if (k === "Parameters") {
 
 						obj[k].WeightPercent.double = +$(`#jsonform-1-elt-${customJsonKey}`).val();
-
-						customJsonKey++;
+						
+						customJsonKey += 5;
 
 					} else if (k === "Indicator") {
 
@@ -143,6 +136,8 @@
 				schema: customJSON,
 				onSubmit: function (errors, values) {
 
+					customJsonKey = 0;
+					
 					fillWeightPercentValues(newJSON);
 
 					let initialJson = {
@@ -154,19 +149,19 @@
 				}
 			});
 
-			//Add defaul values to input fields
+			//add default values to all input fields and disable all input fields but WeightPercent ones
 
 			for (let item in customJSON) {
 
 				let currentValue = customJSON[item].value;
 
-				if(typeof customJSON[item].value === "numebr"){
-					currentValue = Number(currentValue);
-				}
-
 				let currentSelector = `#jsonform-1-elt-${item}`;
 
 				$(currentSelector).val(currentValue);
+
+				if(item % 5 !== 0){
+					$(`#jsonform-1-elt-${item}`).attr("disabled", true);
+				}
 
 			}
 
