@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Getting started with JSON Form</title>
+	<link rel="stylesheet" type="text/css" href="deps/opt/bootstrap.css" />
+	<link rel="stylesheet" href="deps/opt/styles.css">
+</head>
+
+<body>
+	<h1>Getting started with JSON Form</h1>
+	<form></form>
+	<div id="res" class="alert"></div>
+	<script type="text/javascript" src="deps/jquery.min.js"></script>
+	<script type="text/javascript" src="deps/underscore.js"></script>
+	<script type="text/javascript" src="deps/opt/jsv.js"></script>
+	<script type="text/javascript" src="lib/jsonform.js"></script>
+	<script type="text/javascript">
+
+		//load json info from test.json file
+
+		$.getJSON("./test.json", function (json) {
+
+			let newJSON = json.QIndicator;
+
+			let customJSON = {};
+
+			let count = 0;
+
+			//fill customJSON object with all Parameter props
+
+			function extractParameterProps(obj) {
+				for (let k in obj) {
+
+					if (k === "Parameters") {
+
+						let wp = +obj[k].WeightPercent.double;
+
+						let name = obj[k].Name.string;
+
+                        let kpiName = obj[k].KpiName.string;
+
+                        let wr = +obj[k].WeightResult.double;
+
+                        let result = +obj[k].Result.double;
+
+						let wpObj = {
+							type: "number",
+							title: "WeightPercent",
+							value: wp,
+							required: true,
+							key: count
+						}
+
+						let nameObj = {
+							type: "string",
+							title: "Name",
+							value: name,
+							key: count + 1
+						}
+
+						let kpiNameObj = {
+							type: "string",
+							title: "KpiName",
+							value: kpiName,
+							key: count + 2
+						}
+
+						let wrObj = {
+							type: "number",
+							title: "WeightResult",
+							value: result,
+							key: count + 3
+						}
+
+						let resultObj = {
+							type: "number",
+							title: "Result",
+							value: wr,
+							key: count + 4
+						}
+
+						customJSON[count] = wpObj;
+						customJSON[count + 1] = nameObj;
+						customJSON[count + 2] = kpiNameObj;
+						customJSON[count + 3] = wrObj;
+						customJSON[count + 4] = resultObj;
+
+						count += 5;
+
+					} else if (k === "Indicator") {
+
+						for (let item of obj[k]) {
+
+							extractParameterProps(item);
+
+						}
+					}
+				}
+			}
+
+			//execute extractParameterProps
+
+			extractParameterProps(newJSON);
+
+			//change only WeightPercent values of the initial json object 
+
+			let customJsonKey = 0;
+
+			function fillWeightPercentValues(obj) {
+
+				for (let k in obj) {
+
+					if (k === "Parameters") {
+
+						obj[k].WeightPercent.double = +$(`#jsonform-1-elt-${customJsonKey}`).val();
+						
+						customJsonKey += 5;
+
+					} else if (k === "Indicator") {
+
+						for (let inerObj of obj[k]) {
+
+							fillWeightPercentValues(inerObj);
+
+						}
+					}
+				}
+
+			}
+
+			//create simple form from modified json object /customJSON/
+
+			$('form').jsonForm({
+				schema: customJSON,
+				onSubmit: function (errors, values) {
+
+					customJsonKey = 0;
+					
+					fillWeightPercentValues(newJSON);
+
+					let initialJson = {
+						QIndicator: newJSON
+					}
+
+					console.log(initialJson);
+
+				}
+			});
+
+			//add default values to all input fields and disable all input fields but WeightPercent ones
+
+			for (let item in customJSON) {
+
+				let currentValue = customJSON[item].value;
+
+				let currentSelector = `#jsonform-1-elt-${item}`;
+
+				$(currentSelector).val(currentValue);
+
+				if(item % 5 !== 0){
+					$(`#jsonform-1-elt-${item}`).attr("disabled", true);
+				}
+
+			}
+
+		});
+	</script>
+</body>
+
+</html>

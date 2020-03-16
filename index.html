@@ -4,119 +4,1434 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Getting started with JSON Form</title>
-	<link rel="stylesheet" type="text/css" href="deps/opt/bootstrap.css" />
-	<link rel="stylesheet" href="deps/opt/styles.css">
+	<script type="text/javascript" src="deps/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/deps/opt/table-styles.css">
 </head>
 
 <body>
-	<h1>Getting started with JSON Form</h1>
-	<form></form>
-	<div id="res" class="alert"></div>
-	<script type="text/javascript" src="deps/jquery.min.js"></script>
-	<script type="text/javascript" src="deps/underscore.js"></script>
-	<script type="text/javascript" src="deps/opt/jsv.js"></script>
-	<script type="text/javascript" src="lib/jsonform.js"></script>
-	<script type="text/javascript">
+	<div class="container">
+		<div class="table-responsive">
+			<h1>My custom JSON form table</h1>
+			<br />
+			<form action="">
+
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Service</th>
+							<th>Service weight</th>
+							<th>Service quality criteria</th>
+							<th>Service quality criteria weight</th>
+							<th>KQI_level_1</th>
+							<th>KQI_level_1 weight</th>
+							<th>KQI_level_2</th>
+							<th>KQI_level_2 weight</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>WEB browsing</td>
+							<td><input type="number"></td>
+							<td>Throughput</td>
+							<td><input type="number"></td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP throughput DL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP throughput UL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP throughput DL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP throughput UL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Accessibility</td>
+							<td><input type="number"></td>
+							<td>DNS</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max Resolution time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Timeout attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Successful attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max Effective round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max send UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max receive UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Retainability</td>
+							<td><input type="number"></td>
+							<td>Wi-Fi Quality</td>
+							<td><input type="number"></td>
+							<td>Packet error Ratio </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Packet loss Ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Channel Dirtiness</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>UDP receive packet loss </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP send packet loss</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>ICMP packet loss ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+
+						<tr>
+							<td>Video or music streaming</td>
+							<td><input type="number"></td>
+							<td>Throughput</td>
+							<td><input type="number"></td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP throughput DL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP throughput UL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP throughput DL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP throughput UL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Accessibility</td>
+							<td><input type="number"></td>
+							<td>DNS</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max Resolution time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Timeout attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Successful attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max Effective round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max send UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max receive UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Retainability</td>
+							<td><input type="number"></td>
+							<td>Wi-Fi Quality</td>
+							<td><input type="number"></td>
+							<td>Packet error Ratio </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Packet loss Ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Channel Dirtiness</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>UDP receive packet loss </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP send packet loss</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>ICMP packet loss ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+
+						<tr>
+							<td>Downloading/uploading big files(movies/music/games,torrents)</td>
+							<td><input type="number"></td>
+							<td>Throughput</td>
+							<td><input type="number"></td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP throughput DL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP throughput UL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP throughput DL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP throughput UL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Accessibility</td>
+							<td><input type="number"></td>
+							<td>DNS</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max Resolution time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Timeout attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Successful attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max Effective round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max send UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max receive UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Retainability</td>
+							<td><input type="number"></td>
+							<td>Wi-Fi Quality</td>
+							<td><input type="number"></td>
+							<td>Packet error Ratio </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Packet loss Ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Channel Dirtiness</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>UDP receive packet loss </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP send packet loss</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>ICMP packet loss ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+
+						<tr>
+							<td>Social Networking (chat/voice)</td>
+							<td><input type="number"></td>
+							<td>Throughput</td>
+							<td><input type="number"></td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP throughput DL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP throughput UL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP throughput DL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP throughput UL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Accessibility</td>
+							<td><input type="number"></td>
+							<td>DNS</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max Resolution time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Timeout attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Successful attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max Effective round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max send UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max receive UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Retainability</td>
+							<td><input type="number"></td>
+							<td>Wi-Fi Quality</td>
+							<td><input type="number"></td>
+							<td>Packet error Ratio </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Packet loss Ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Channel Dirtiness</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>UDP receive packet loss </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP send packet loss</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>ICMP packet loss ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+
+						<tr>
+							<td>Email(web-based)</td>
+							<td><input type="number"></td>
+							<td>Throughput</td>
+							<td><input type="number"></td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP throughput DL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP throughput UL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP throughput DL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP throughput UL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Accessibility</td>
+							<td><input type="number"></td>
+							<td>DNS</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max Resolution time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Timeout attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Successful attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max Effective round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max send UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max receive UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Retainability</td>
+							<td><input type="number"></td>
+							<td>Wi-Fi Quality</td>
+							<td><input type="number"></td>
+							<td>Packet error Ratio </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Packet loss Ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Channel Dirtiness</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>UDP receive packet loss </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP send packet loss</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>ICMP packet loss ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+
+						<tr>
+							<td>Online gaming</td>
+							<td><input type="number"></td>
+							<td>Throughput</td>
+							<td><input type="number"></td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP throughput DL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP throughput UL</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP throughput DL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP throughput UL </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Accessibility</td>
+							<td><input type="number"></td>
+							<td>DNS</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max Resolution time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Timeout attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Successful attempts</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip time</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>Min/Avg/Max round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max Effective round-trip delay</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max send UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Min/Avg/Max receive UDP path IP delay variation</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Retainability</td>
+							<td><input type="number"></td>
+							<td>Wi-Fi Quality</td>
+							<td><input type="number"></td>
+							<td>Packet error Ratio </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Packet loss Ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>Channel Dirtiness</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP</td>
+							<td><input type="number"></td>
+							<td>HTTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>HTTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP</td>
+							<td><input type="number"></td>
+							<td>UDP receive packet loss </td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>UDP send packet loss</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>ICMP</td>
+							<td><input type="number"></td>
+							<td>ICMP packet loss ratio</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP</td>
+							<td><input type="number"></td>
+							<td>FTP DL packet loss ratio (+ TCP checksum errors)</td>
+							<td><input type="number"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>FTP UL packet loss ratio (+ TCP Lost segments)</td>
+							<td><input type="number"></td>
+						</tr>
+
+					</tbody>
+				</table>
+				<button id="button" type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
+
+<script>
+	$(document).ready(function () {
 
 		//load json info from test.json file
 
-		$.getJSON("./test.json", function (json) {
+		$.getJSON("test.json", function (data) {
 
-			let newJSON = json.QIndicator;
+			let newJSON = data.QIndicator;
 
-			let customJSON = {};
+			//extract WeightPercent values and fill input fields in the table
 
 			let count = 0;
+			let otherCounter = 0;
 
-			//fill customJSON object with all Parameter props
+			function extractWeightPercentValues(obj) {
 
-			function extractParameterProps(obj) {
 				for (let k in obj) {
 
-					if (k === "Parameters") {
+					if (k === "Parameters" && otherCounter !== 0) {
 
 						let wp = +obj[k].WeightPercent.double;
 
-						let name = obj[k].Name.string;
+						$('input').eq(count).val(wp);
 
-                        let kpiName = obj[k].KpiName.string;
+						count++;
 
-                        let wr = +obj[k].WeightResult.double;
-
-                        let result = +obj[k].Result.double;
-
-						let wpObj = {
-							type: "number",
-							title: "WeightPercent",
-							value: wp,
-							required: true,
-							key: count
-						}
-
-						let nameObj = {
-							type: "string",
-							title: "Name",
-							value: name,
-							key: count + 1
-						}
-
-						let kpiNameObj = {
-							type: "string",
-							title: "KpiName",
-							value: kpiName,
-							key: count + 2
-						}
-
-						let wrObj = {
-							type: "number",
-							title: "WeightResult",
-							value: result,
-							key: count + 3
-						}
-
-						let resultObj = {
-							type: "number",
-							title: "Result",
-							value: wr,
-							key: count + 4
-						}
-
-						customJSON[count] = wpObj;
-						customJSON[count + 1] = nameObj;
-						customJSON[count + 2] = kpiNameObj;
-						customJSON[count + 3] = wrObj;
-						customJSON[count + 4] = resultObj;
-
-						count += 5;
 
 					} else if (k === "Indicator") {
 
 						for (let item of obj[k]) {
 
-							extractParameterProps(item);
+							extractWeightPercentValues(item);
 
 						}
 					}
+
+					otherCounter++;
 				}
+
 			}
 
-			//execute extractParameterProps
+			//execute extractWeightPercentValues on newJSON
 
-			extractParameterProps(newJSON);
+			extractWeightPercentValues(newJSON);
 
 			//change only WeightPercent values of the initial json object 
 
-			let customJsonKey = 0;
+			let inputCount = 0;
+			let someOtherCounter = 0;
 
 			function fillWeightPercentValues(obj) {
 
 				for (let k in obj) {
 
-					if (k === "Parameters") {
+					if (k === "Parameters" && someOtherCounter !== 0) {
 
-						obj[k].WeightPercent.double = +$(`#jsonform-1-elt-${customJsonKey}`).val();
-						
-						customJsonKey += 5;
+						obj[k].WeightPercent.double = +$('input').eq(inputCount).val();
+
+						inputCount++;
 
 					} else if (k === "Indicator") {
 
@@ -126,47 +1441,28 @@
 
 						}
 					}
+					someOtherCounter++;
 				}
 
 			}
 
-			//create simple form from modified json object /customJSON/
+			//on click submit button execute fillWeightPercentValues and log on the console initial json object with modified values
 
-			$('form').jsonForm({
-				schema: customJSON,
-				onSubmit: function (errors, values) {
+			$('#button').click(function (e) {
+				e.preventDefault();
+				inputCount = 0;
+				someOtherCounter = 0;
 
-					customJsonKey = 0;
-					
-					fillWeightPercentValues(newJSON);
+				fillWeightPercentValues(newJSON);
 
-					let initialJson = {
-						Qindicator: newJSON
-					}
-
-					console.log(initialJson);
-
+				let initialJson = {
+					QIndicator: newJSON
 				}
+
+				console.log(initialJson);
 			});
 
-			//add default values to all input fields and disable all input fields but WeightPercent ones
-
-			for (let item in customJSON) {
-
-				let currentValue = customJSON[item].value;
-
-				let currentSelector = `#jsonform-1-elt-${item}`;
-
-				$(currentSelector).val(currentValue);
-
-				if(item % 5 !== 0){
-					$(`#jsonform-1-elt-${item}`).attr("disabled", true);
-				}
-
-			}
-
 		});
-	</script>
-</body>
 
-</html>
+	});
+</script>
